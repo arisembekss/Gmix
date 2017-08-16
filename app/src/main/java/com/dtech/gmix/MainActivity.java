@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //3fc00309d48d2da1bd61a00ad6bff547 -> 2 block
         //e9f60718e67952c7830fdb6f6c62d3ad -> 4 block
         database = FirebaseDatabase.getInstance();
