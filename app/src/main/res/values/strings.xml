@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gmix</string>
+    <string name="title_activity_controll">ControllActivity</string>
 </resources>

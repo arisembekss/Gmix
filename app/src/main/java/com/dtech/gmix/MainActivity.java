@@ -1,5 +1,6 @@
 package com.dtech.gmix;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         bon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setLampu(1);
+                Intent intent = new Intent(MainActivity.this, ControllActivity.class);
+                startActivity(intent);
             }
         });
 
