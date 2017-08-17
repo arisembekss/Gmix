@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvruang1"
-                        android:text="a, b, e, s"/>
+                        android:text="a, b, e, s, tamu"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -64,15 +64,6 @@
                         android:text="+ Ruangan"
                         android:layout_marginLeft="15dp"
                         android:id="@+id/btnAdd1"/>
-
-                    <EditText
-                        android:layout_width="150dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/btnAdd1"
-                        android:drawableRight="@android:drawable/ic_input_add"
-                        android:id="@+id/ed1"
-                        android:visibility="gone"/>
 
                 </RelativeLayout>
 

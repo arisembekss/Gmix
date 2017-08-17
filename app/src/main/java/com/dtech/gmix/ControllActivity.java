@@ -1,6 +1,5 @@
 package com.dtech.gmix;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,15 +7,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,8 +30,6 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     Switch switch1, switch2;
     TextView tv2, tvruang1;
     Button btnAdd1, btnAdd2;
-    EditText edAdd1, edAdd2;
-    RelativeLayout lineRow1, lineRow2;
 
     PrefManager prefManager;
     SharedPreferences sharedPreferences;
@@ -45,8 +38,6 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
 
     DatabaseReference myRef, myRef2;
     FirebaseDatabase database;
-
-    private View mExclusiveEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,30 +119,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         tv2.setText(digital1blocka);
         btnAdd1 = (Button) findViewById(R.id.btnAdd1);
         btnAdd1.setOnClickListener(this);
-        edAdd1 = (EditText) findViewById(R.id.ed1);
-        edAdd1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                final int DRAWABLE_LEFT = 0;
-                final int DRAWABLE_TOP = 1;
-                final int DRAWABLE_RIGHT = 2;
-                final int DRAWABLE_BOTTOM = 3;
 
-                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    if(motionEvent.getRawX() >= (edAdd1.getRight() - edAdd1.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        // your action here
-
-                        //inflateEditRow(edAdd1.getText().toString());
-                        btnAdd1.setVisibility(View.VISIBLE);
-                        edAdd1.setVisibility(View.GONE);
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
-
-        //digital1blocka.equals("0") = true ? switch1.setChecked(false) : switch1.setChecked(true);
         if (digital1blocka.equals("0")) {
             switch1.setChecked(false);
         } else{
@@ -169,9 +137,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
 
     }
 
-    public void deleteView() {
 
-    }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -215,43 +181,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         }
     }
 
-    /*private void inflateEditRow(String name) {
 
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View rowView = inflater.inflate(R.layout.items, null);
-        Button btnItem = (Button) rowView.findViewById(R.id.btnitem);
 
-        if (name != null && !name.isEmpty()) {
-            btnItem.setText(name);
-        } else {
-            mExclusiveEmptyView = rowView;
-            /
-        }
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.LEFT_OF);
-        params.leftMargin += btnItem.getWidth();
-
-        lineRow1.addView(rowView, params);
-    }*/
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        // TODO: Handle screen rotation:
-        // encapsulate information in a parcelable object, and save it
-        // into the state bundle.
-
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        // TODO: Handle screen rotation:
-        // restore the saved items and inflate each one with inflateEditRow;
-
-    }
 }
