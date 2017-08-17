@@ -15,7 +15,7 @@
         android:layout_centerVertical="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:orientation="horizontal"
             android:id="@+id/linearLayout">
             <RelativeLayout
@@ -27,14 +27,55 @@
                     android:layout_height="wrap_content"
                     android:text="Block A"
                     android:textSize="40sp"
+                    android:id="@+id/txtTitle1"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"/>
-                <Spinner
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true">
+                    android:id="@+id/txtTitle2"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/txtTitle1"
+                    android:text="Untuk Ruangan :"/>
 
-                </Spinner>
+                <RelativeLayout
+                    android:id="@+id/linerow1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTitle2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:clipChildren="false">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvruang1"
+                        android:text="a, b, e, s"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linerow1">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="+ Ruangan"
+                        android:layout_marginLeft="15dp"
+                        android:id="@+id/btnAdd1"/>
+
+                    <EditText
+                        android:layout_width="150dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/btnAdd1"
+                        android:drawableRight="@android:drawable/ic_input_add"
+                        android:id="@+id/ed1"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
