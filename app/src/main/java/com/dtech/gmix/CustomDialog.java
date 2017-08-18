@@ -2,20 +2,16 @@ package com.dtech.gmix;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dtech.gmix.preference.CustomDialogClickListener;
@@ -30,11 +26,11 @@ import java.util.List;
  */
 
 public class CustomDialog  {
-    Context context;
+
     LinearLayout lineRow1;
 
     PrefManager prefManager;
-    SharedPreferences sharedPreferences;
+
     public static CustomDialogClickListener clickListener;
 
     public void setClickListener(CustomDialogClickListener itemClickListener) {
@@ -48,32 +44,49 @@ public class CustomDialog  {
         dialogStatus.setTitle(title);
         dialogStatus.setContentView(R.layout.custom_dialog_keterangan);
         final List<String> arrayRuang = new ArrayList<>();
-        TextView tv = (TextView) dialogStatus.findViewById(R.id.msgDialogKet);
+
         lineRow1 = (LinearLayout) dialogStatus.findViewById(R.id.linerowdialog);
-        //tv.setText(message);
+
         Button btnadd = (Button) dialogStatus.findViewById(R.id.addBtn);
-        if (tag.matches("saldo")) {
+        btnadd.setText("Done");
+        /*if (tag.matches("saldo")) {
             btnadd.setText("Tambah Saldo");
         } else {
-            btnadd.setText("Close");
-        }
+            btnadd.setText("Done");
+        }*/
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String sruang ;
                 if (arrayRuang.size() > 1) {
                     sruang = TextUtils.join(", ", arrayRuang);
-                    prefManager.setRuangBloka(sruang);
-                    //prefManager.setRuangBloka(TextUtils.join(", ", arrayproses));
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka(sruang);
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb(sruang);
+                    }
                 } else if (arrayRuang.size() == 1) {
                     sruang = TextUtils.join("", arrayRuang);
-                    prefManager.setRuangBloka(sruang);
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka(sruang);
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb(sruang);
+                    }
+                    //prefManager.setRuangBloka(sruang);
                 } else {
                     sruang = "";
-                    prefManager.setRuangBloka(sruang);
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka(sruang);
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb(sruang);
+                    }
+                    //prefManager.setRuangBloka(sruang);
                 }
-                //prefManager.setRuangBloka(sruang);
-                if (clickListener != null) clickListener.onClick(view, sruang);
+
+                if (clickListener != null) clickListener.onClick(view, sruang, tag);
                 dialogStatus.dismiss();
             }
         });
@@ -82,12 +95,11 @@ public class CustomDialog  {
             String nmessage = message.replaceAll("\\s", "");
             String[] messageArray = nmessage.split(",");
             for (int i = 0; i < messageArray.length; i++) {
-                //inflateEditRow(context, messageArray[i]);
+
                 arrayRuang.add(messageArray[i]);
-                inflateEditRow(context, messageArray[i],arrayRuang);
+                inflateEditRow(context, messageArray[i],arrayRuang, tag);
             }
-            //prosesArray(context, arrayRuang);
-            //inflateEditRow(context, arrayRuang);
+
             String struang = TextUtils.join(",", arrayRuang);
             Log.d("arrayRuang ", struang);
         }
@@ -99,40 +111,25 @@ public class CustomDialog  {
             public void onClick(View view) {
 
                 arrayRuang.add(eddialog.getText().toString());
-                //prosesArray(context, arrayRuang);
-                inflateEditRow(context, eddialog.getText().toString(), arrayRuang);
-                //inflateEditRow(context, arrayRuang);
+
+                inflateEditRow(context, eddialog.getText().toString(), arrayRuang, tag);
+
                 eddialog.setText("");
                 String struang = TextUtils.join(",", arrayRuang);
                 Log.d("arrayRuang ", struang);
             }
         });
 
-
-        //if (message!=null && !message.isEmpty()) {
-
-            /**/
-            //;
-        //}
         dialogStatus.show();
         return this;
     }
 
-    public void prosesArray(View v) {
-        /*for (int i=0; i<arrayRuang.size();i++) {
-            inflateEditRow(context, arrayRuang.get(i));
-
-        }*/
-        lineRow1.removeView((View) v.getParent());
-    }
-
-
-    private void inflateEditRow(Context context, final String name, final List<String> arrayproses) {
+    private void inflateEditRow(Context context, final String name, final List<String> arrayproses, final String tag) {
 
         prefManager = new PrefManager(context);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //View rowView = null;
+
 
         View rowView = inflater.inflate(R.layout.items, null);
 
@@ -143,24 +140,41 @@ public class CustomDialog  {
         btnItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //lineRow1.removeView((View) rowView.getParent());
+
                 Log.d("current array", String.valueOf(arrayproses.size()));
-                //prosesArray(rowView);
+
                 String currentText = txtdel.getText().toString();
                 arrayproses.remove(currentText);
                 String savetopref;
                 if (arrayproses.size() > 1) {
                     savetopref = TextUtils.join(", ", arrayproses);
-                    prefManager.setRuangBloka(savetopref);
-                    //prefManager.setRuangBloka(TextUtils.join(", ", arrayproses));
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka(savetopref);
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb(savetopref);
+                    }
+                    //prefManager.setRuangBloka(savetopref);
                 } else if (arrayproses.size() == 1) {
                     savetopref = TextUtils.join("", arrayproses);
-                    prefManager.setRuangBloka(savetopref);
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka(savetopref);
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb(savetopref);
+                    }
+                    //prefManager.setRuangBloka(savetopref);
                 } else {
-                    prefManager.setRuangBloka("");
+                    if (tag.matches("1")) {
+                        prefManager.setRuangBloka("");
+                    }
+                    if (tag.matches("2")) {
+                        prefManager.setRuangBlokb("");
+                    }
+                    //prefManager.setRuangBloka("");
                 }
 
-                if (clickListener != null) clickListener.onClick(view, TextUtils.join(",", arrayproses));
+                if (clickListener != null) clickListener.onClick(view, TextUtils.join(",", arrayproses), tag);
                 dialogStatus.dismiss();
 
             }
@@ -168,12 +182,4 @@ public class CustomDialog  {
         lineRow1.addView(rowView, lineRow1.getChildCount() - 1);
     }
 
-
-
-/*    @Override
-    public void onClick(View view) {
-        String sruang = TextUtils.join(",", arrayRuang);
-        if (clickListener != null) clickListener.onClick(view, sruang);
-        dialogStatus.dismiss();
-    }*/
 }

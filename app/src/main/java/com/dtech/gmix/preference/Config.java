@@ -12,4 +12,6 @@ public class Config {
     public static final String DIGITAL_A_BLOCK_B = "blok-b";
     public static final String DIGITAL_A_BLOCK_A = "digital1blocka";
     public static final String RUANG_A = "ruang-a";
+    public static final String RUANG_B = "ruang-b";
+    public static final String LOGIN = "login";
 }

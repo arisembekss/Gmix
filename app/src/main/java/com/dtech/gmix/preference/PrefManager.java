@@ -40,4 +40,14 @@ public class PrefManager {
         editor.putString(Config.RUANG_A, ruang);
         editor.commit();
     }
+
+    public void setRuangBlokb(String ruang) {
+        editor.putString(Config.RUANG_B, ruang);
+        editor.commit();
+    }
+
+    public void setLogin(String login) {
+        editor.putString(Config.LOGIN, login);
+        editor.commit();
+    }
 }

@@ -1,18 +1,15 @@
 package com.dtech.gmix;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,13 +27,13 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
 
     ImageView img1, img2;
     Switch switch1, switch2;
-    TextView tv2, tvruang1;
+    TextView tv2, tvruang1, tvruang2;
     Button btnAdd1, btnAdd2;
 
     PrefManager prefManager;
     SharedPreferences sharedPreferences;
 
-    String digital1blocka, ruangA, blockb;
+    String digital1blocka, ruangA, blockb, ruangb;
 
     DatabaseReference myRef, myRef2;
     FirebaseDatabase database;
@@ -48,20 +45,21 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         prefManager = new PrefManager(this);
+        sharedPreferences = getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
+        String login = (sharedPreferences.getString(Config.LOGIN, ""));
+        if (login == "") {
+            launchLogin();
+        } else {
+            database = FirebaseDatabase.getInstance();
+            initRealtimeDbase();
 
-        database = FirebaseDatabase.getInstance();
-        initRealtimeDbase();
+            initUi();
+        }
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        initUi();
+    private void launchLogin() {
+        Intent intent = new Intent(ControllActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void initRealtimeDbase() {
@@ -105,10 +103,11 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     }
 
     private void initUi() {
-        sharedPreferences = getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
+
         digital1blocka = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_A, ""));
         blockb = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_B, ""));
         ruangA = (sharedPreferences).getString(Config.RUANG_A, "");
+        ruangb = (sharedPreferences.getString(Config.RUANG_B, ""));
 
         //lineRow1 = (RelativeLayout) findViewById(R.id.linerow1);
         img1 = (ImageView) findViewById(R.id.img1);
@@ -116,13 +115,17 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         tv2 = (TextView) findViewById(R.id.textView2);
         tvruang1 = (TextView) findViewById(R.id.tvruang1);
         tvruang1.setText(ruangA);
+        tvruang2 = (TextView) findViewById(R.id.tvruang2);
+        tvruang2.setText(ruangb);
         switch1 = (Switch) findViewById(R.id.switch1);
         switch2 = (Switch) findViewById(R.id.switch2);
         switch1.setOnCheckedChangeListener(this);
         switch2.setOnCheckedChangeListener(this);
         tv2.setText(digital1blocka);
         btnAdd1 = (Button) findViewById(R.id.btnAdd1);
+        btnAdd2 = (Button) findViewById(R.id.btnAdd2);
         btnAdd1.setOnClickListener(this);
+        btnAdd2.setOnClickListener(this);
 
         if (digital1blocka.equals("0")) {
             switch1.setChecked(false);
@@ -178,21 +181,32 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAdd1:
-                /*edAdd1.setVisibility(View.VISIBLE);
-                btnAdd1.setVisibility(View.GONE);*/
-
-                CustomDialog custom = new CustomDialog().makeDialog(this, "Edit Ruangan", tvruang1.getText().toString(), "");
+                CustomDialog custom = new CustomDialog().makeDialog(this, "Edit Ruangan", tvruang1.getText().toString(), "1");
                 custom.setClickListener(this);
+                break;
+            case R.id.btnAdd2:
+                CustomDialog custom2 = new CustomDialog().makeDialog(this, "Edit Ruangan", tvruang2.getText().toString(), "2");
+                custom2.setClickListener(this);
         }
     }
 
 
     //@Override
-    public void onClick(View view, String data) {
-        String ndata = data;/*.replace(",", ", ");*/
-        Log.d("value itemclick", ndata);
-        Toast.makeText(ControllActivity.this, ndata, Toast.LENGTH_LONG).show();
-        tvruang1.setText(ndata);
+    public void onClick(View view, String data, String tag) {
 
+        Log.d("value itemclick", data);
+        Toast.makeText(ControllActivity.this, data+", tag :"+tag, Toast.LENGTH_LONG).show();
+        if (tag.matches("2")) {
+            tvruang2.setText(data);
+        } else {
+            tvruang1.setText(data);
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
