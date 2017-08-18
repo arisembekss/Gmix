@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dtech.gmix.preference.CustomDialogClickListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +27,16 @@ import java.util.List;
  * Created by aris on 17/08/17.
  */
 
-public class CustomDialog {
+public class CustomDialog  {
     Context context;
     LinearLayout lineRow1;
-    public void makeDialog(final Context context, String title, String message, final String tag) {
+    public static CustomDialogClickListener clickListener;
+
+    public void setClickListener(CustomDialogClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
+    }
+
+    public CustomDialog makeDialog(final Context context, String title, String message, final String tag) {
         final Dialog dialogStatus = new Dialog(context);
         dialogStatus.setTitle(title);
         dialogStatus.setContentView(R.layout.custom_dialog_keterangan);
@@ -45,8 +53,9 @@ public class CustomDialog {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //context.startActivity(new Intent(context, AddSaldoActivity.class));
-
+                String sruang = TextUtils.join(", ", arrayRuang);
+                if (clickListener != null) clickListener.onClick(view, sruang);
+                dialogStatus.dismiss();
             }
         });
 
@@ -81,6 +90,7 @@ public class CustomDialog {
             //;
         //}
         dialogStatus.show();
+        return this;
     }
 
 
@@ -90,8 +100,15 @@ public class CustomDialog {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.items, null);
-        ImageButton btnItem = (ImageButton) rowView.findViewById(R.id.imgdel);
         TextView txtdel = (TextView) rowView.findViewById(R.id.textDel);
+        ImageButton btnItem = (ImageButton) rowView.findViewById(R.id.imgdel);
+        btnItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lineRow1.removeView((View) rowView.getParent());
+            }
+        });
+
 
         txtdel.setText(name);
         lineRow1.addView(rowView, lineRow1.getChildCount() - 1);
@@ -99,4 +116,12 @@ public class CustomDialog {
 
     }
 
+
+
+/*    @Override
+    public void onClick(View view) {
+        String sruang = TextUtils.join(",", arrayRuang);
+        if (clickListener != null) clickListener.onClick(view, sruang);
+        dialogStatus.dismiss();
+    }*/
 }

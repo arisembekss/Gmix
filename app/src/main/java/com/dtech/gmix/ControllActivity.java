@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dtech.gmix.preference.Config;
+import com.dtech.gmix.preference.CustomDialogClickListener;
 import com.dtech.gmix.preference.PrefManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ControllActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class ControllActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, CustomDialogClickListener {
 
     ImageView img1, img2;
     Switch switch1, switch2;
@@ -177,11 +179,17 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
                 /*edAdd1.setVisibility(View.VISIBLE);
                 btnAdd1.setVisibility(View.GONE);*/
 
-                new CustomDialog().makeDialog(this, "Edit Ruangan", tvruang1.getText().toString(), "");
+                CustomDialog custom = new CustomDialog().makeDialog(this, "Edit Ruangan", tvruang1.getText().toString(), "");
+                custom.setClickListener(this);
         }
     }
 
 
+    //@Override
+    public void onClick(View view, String data) {
+        Log.d("value itemclick", data);
+        Toast.makeText(ControllActivity.this, data, Toast.LENGTH_LONG).show();
+        tvruang1.setText(data);
 
-
+    }
 }
