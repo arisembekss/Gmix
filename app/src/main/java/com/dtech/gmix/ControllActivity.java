@@ -36,7 +36,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     PrefManager prefManager;
     SharedPreferences sharedPreferences;
 
-    String digital1blocka, blockb;
+    String digital1blocka, ruangA, blockb;
 
     DatabaseReference myRef, myRef2;
     FirebaseDatabase database;
@@ -108,12 +108,14 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         sharedPreferences = getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         digital1blocka = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_A, ""));
         blockb = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_B, ""));
+        ruangA = (sharedPreferences).getString(Config.RUANG_A, "");
 
         //lineRow1 = (RelativeLayout) findViewById(R.id.linerow1);
         img1 = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
         tv2 = (TextView) findViewById(R.id.textView2);
         tvruang1 = (TextView) findViewById(R.id.tvruang1);
+        tvruang1.setText(ruangA);
         switch1 = (Switch) findViewById(R.id.switch1);
         switch2 = (Switch) findViewById(R.id.switch2);
         switch1.setOnCheckedChangeListener(this);
@@ -187,9 +189,10 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
 
     //@Override
     public void onClick(View view, String data) {
-        Log.d("value itemclick", data);
-        Toast.makeText(ControllActivity.this, data, Toast.LENGTH_LONG).show();
-        tvruang1.setText(data);
+        String ndata = data;/*.replace(",", ", ");*/
+        Log.d("value itemclick", ndata);
+        Toast.makeText(ControllActivity.this, ndata, Toast.LENGTH_LONG).show();
+        tvruang1.setText(ndata);
 
     }
 }

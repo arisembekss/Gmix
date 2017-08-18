@@ -35,4 +35,9 @@ public class PrefManager {
         editor.putString(Config.DIGITAL_A_BLOCK_B, displayNumber);
         editor.commit();
     }
+
+    public void setRuangBloka(String ruang) {
+        editor.putString(Config.RUANG_A, ruang);
+        editor.commit();
+    }
 }

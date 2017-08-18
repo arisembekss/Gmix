@@ -11,4 +11,5 @@ public class Config {
     public static final int PRIVATE_MODE = 0;
     public static final String DIGITAL_A_BLOCK_B = "blok-b";
     public static final String DIGITAL_A_BLOCK_A = "digital1blocka";
+    public static final String RUANG_A = "ruang-a";
 }
