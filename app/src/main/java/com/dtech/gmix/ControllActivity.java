@@ -42,8 +42,8 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controll);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
         prefManager = new PrefManager(this);
         sharedPreferences = getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         String login = (sharedPreferences.getString(Config.LOGIN, ""));
@@ -60,6 +60,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     private void launchLogin() {
         Intent intent = new Intent(ControllActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void initRealtimeDbase() {
@@ -74,7 +75,14 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String bloka = String.valueOf(dataSnapshot.getValue());
                 Log.d("Value blok-a ", bloka);
-                prefManager.setDigitalaBloka(bloka);
+                //prefManager.setDigitalaBloka(bloka);
+                if (bloka == "0") {
+                    switch1.setChecked(false);
+                    img1.setImageResource(R.drawable.energy_off);
+                } else{
+                    switch1.setChecked(true);
+                    img1.setImageResource(R.drawable.energy_on);
+                }
 
             }
 
@@ -89,9 +97,16 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //int digital1blocka = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                String blokb = String.valueOf(dataSnapshot.getValue());
-                Log.d("Value blok-b ", blokb);
-                prefManager.setBlokb(blokb);
+                String sblokb = String.valueOf(dataSnapshot.getValue());
+                Log.d("Value blok-b ", sblokb);
+                //prefManager.setBlokb(blokb);
+                if (sblokb == "0") {
+                    switch2.setChecked(false);
+                    img2.setImageResource(R.drawable.energy_off);
+                } else{
+                    switch2.setChecked(true);
+                    img2.setImageResource(R.drawable.energy_on);
+                }
 
             }
 
@@ -127,17 +142,9 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         btnAdd1.setOnClickListener(this);
         btnAdd2.setOnClickListener(this);
 
-        if (digital1blocka.equals("0")) {
-            switch1.setChecked(false);
-        } else{
-            switch1.setChecked(true);
-        }
 
-        if (blockb.equals("0")) {
-            switch2.setChecked(false);
-        } else{
-            switch2.setChecked(true);
-        }
+
+
 
 
         //switch1.isChecked()
@@ -154,24 +161,24 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
                 if (b) {
                     myRef.setValue(1);
                     prefManager.setDigitalaBloka("1");
-                    img1.setImageResource(R.mipmap.ic_launcher);
+                    img1.setImageResource(R.drawable.energy_on);
 
                 } else {
                     myRef.setValue(0);
                     prefManager.setDigitalaBloka("0");
-                    img1.setImageResource(R.mipmap.ic_launcher_round);
+                    img1.setImageResource(R.drawable.energy_off);
                 }
                 break;
             case R.id.switch2:
                 if (b) {
                     myRef2.setValue(1);
                     prefManager.setBlokb("1");
-                    img2.setImageResource(R.mipmap.ic_launcher);
+                    img2.setImageResource(R.drawable.energy_on);
 
                 } else {
                     myRef2.setValue(0);
                     prefManager.setBlokb("0");
-                    img2.setImageResource(R.mipmap.ic_launcher_round);
+                    img2.setImageResource(R.drawable.energy_off);
                 }
                 break;
         }

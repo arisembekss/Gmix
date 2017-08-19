@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.dtech.gmix.ControllActivity"
     tools:showIn="@layout/activity_controll">
@@ -15,77 +16,95 @@
         android:layout_centerVertical="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/linearLayout">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/blue1"
                 android:layout_weight="0.35">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Block A"
-                    android:textSize="40sp"
+                    android:textColor="@color/icons"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
                     android:id="@+id/txtTitle1"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"/>
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtTitle2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
+                    android:id="@+id/lin5"
+                    android:orientation="horizontal"
                     android:layout_below="@+id/txtTitle1"
-                    android:text="Untuk Ruangan :"/>
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtTitle2"
+                        android:text="Untuk Ruangan :"/>
+
+                    <Button
+                        android:id="@+id/btnAdd1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:backgroundTint="@color/blue2"
+                        android:drawableLeft="@android:drawable/ic_menu_edit"
+                        android:text="Ruangan" />
+                </LinearLayout>
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtTitle2"
+                    android:layout_below="@+id/lin5"
+                    android:background="@color/icons"
                     android:id="@+id/tvruang1"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginLeft="15dp"
                     android:text=""/>
 
-                <Button
-                    android:id="@+id/btnAdd1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_below="@+id/tvruang1"
-                    android:drawableLeft="@android:drawable/ic_menu_edit"
-                    android:text="Ruangan" />
+
 
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/blue2"
                 android:layout_weight="0.65">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/ic_launcher_round"
-                    android:id="@+id/img1"
-                    android:layout_marginTop="13dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-                <Switch
-                    android:id="@+id/switch1"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Switch"
-                    android:textOn="On"
-                    android:textOff="Off"
-                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_below="@+id/img1"
-                    android:layout_centerHorizontal="true" />
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/energy_off"
+                        android:id="@+id/img1"/>
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOn="On"
+                        android:textOff="Off"
+
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"/>
+                </LinearLayout>
+
             </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
             android:id="@+id/linearLayout2"
@@ -93,70 +112,115 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/teal1"
                 android:layout_weight="0.35">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Block B"
-                    android:textSize="40sp"
+                    android:textColor="@color/icons"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
                     android:id="@+id/txtTitle3"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"/>
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtTitle4"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
+                    android:id="@+id/lin4"
+                    android:orientation="horizontal"
                     android:layout_below="@+id/txtTitle3"
-                    android:text="Untuk Ruangan :"/>
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtTitle4"
+                        android:text="Untuk Ruangan :"/>
+                    <Button
+                        android:id="@+id/btnAdd2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:backgroundTint="@color/teal2"
+                        android:drawableLeft="@android:drawable/ic_menu_edit"
+                        android:text="Ruangan" />
+                </LinearLayout>
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtTitle4"
+                    android:layout_below="@+id/lin4"
                     android:id="@+id/tvruang2"
+                    android:background="@color/icons"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
                     android:text=""/>
 
-                <Button
-                    android:id="@+id/btnAdd2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_below="@+id/tvruang2"
-                    android:drawableLeft="@android:drawable/ic_menu_edit"
-                    android:text="Ruangan" />
+
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/teal2"
                 android:layout_weight="0.65">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="13dp"
-                    android:src="@mipmap/ic_launcher_round"
-                    android:id="@+id/img2"/>
-                <Switch
-                    android:id="@+id/switch2"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Switch"
-                    android:textOn="On"
-                    android:textOff="Off"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_below="@+id/img2"
                     android:layout_centerHorizontal="true"
-                    />
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/energy_off"
+                        android:id="@+id/img2"/>
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOn="On"
+                        android:textOff="Off"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/img2"
+
+                        />
+                </LinearLayout>
+
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tit1"
+        android:textColor="@color/icons"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="CEO"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/icons"
+        android:textStyle="bold"
+        android:layout_below="@+id/tit1"
+        android:text="CONTROL ELECTRICAL OPERATION"
+        android:textSize="20sp"
+        android:id="@+id/tit2"/>
 
+    <View
+        android:layout_width="325dp"
+        android:layout_height="3dp"
+        android:layout_below="@+id/tit2"
+        android:background="@color/divider"
+        android:layout_centerHorizontal="true"/>
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
