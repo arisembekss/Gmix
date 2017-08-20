@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.dtech.gmix.ControllActivity"
     tools:showIn="@layout/activity_controll">
@@ -27,36 +29,39 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Block A"
+                    android:text="BLOK A"
                     android:textColor="@color/icons"
                     android:textStyle="bold"
                     android:textSize="30sp"
                     android:id="@+id/txtTitle1"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"/>
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lin5"
-                    android:orientation="horizontal"
                     android:layout_below="@+id/txtTitle1"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="15dp">
+
                     <TextView
+                        android:id="@+id/txtTitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtTitle2"
-                        android:text="Untuk Ruangan :"/>
+                        android:text="Ruangan :"
+                        android:layout_centerVertical="true"/>
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btnAdd1"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@+id/txtTitle2"
+                        android:layout_centerVertical="true"
                         android:backgroundTint="@color/blue2"
-                        android:drawableLeft="@android:drawable/ic_menu_edit"
-                        android:text="Ruangan" />
-                </LinearLayout>
+                        android:src="@android:drawable/ic_menu_edit"
+                        />
+                </RelativeLayout>
 
 
                 <TextView
@@ -67,7 +72,8 @@
                     android:id="@+id/tvruang1"
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="15dp"
-                    android:text=""/>
+                    android:text=""
+                    android:textAlignment="center"/>
 
 
 
@@ -117,18 +123,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Block B"
+                    android:text="BLOK B"
                     android:textColor="@color/icons"
                     android:textStyle="bold"
                     android:textSize="30sp"
                     android:id="@+id/txtTitle3"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"/>
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lin4"
-                    android:orientation="horizontal"
                     android:layout_below="@+id/txtTitle3"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="15dp">
@@ -136,16 +141,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtTitle4"
-                        android:text="Untuk Ruangan :"/>
-                    <Button
+                        android:text="Ruangan :"
+                        android:layout_centerVertical="true"/>
+                    <ImageButton
                         android:id="@+id/btnAdd2"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/txtTitle4"
                         android:backgroundTint="@color/teal2"
-                        android:drawableLeft="@android:drawable/ic_menu_edit"
+                        android:src="@android:drawable/ic_menu_edit"
                         android:text="Ruangan" />
-                </LinearLayout>
+                </RelativeLayout>
 
 
                 <TextView
@@ -156,7 +164,8 @@
                     android:background="@color/icons"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="15dp"
-                    android:text=""/>
+                    android:text=""
+                    android:textAlignment="center"/>
 
 
             </RelativeLayout>
@@ -202,7 +211,7 @@
         android:textColor="@color/icons"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:text="CEO"/>
+        android:text="G-MIX"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

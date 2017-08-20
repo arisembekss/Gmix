@@ -2,13 +2,14 @@ package com.dtech.gmix;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,11 +28,12 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
 
     ImageView img1, img2;
     Switch switch1, switch2;
-    TextView tv2, tvruang1, tvruang2;
-    Button btnAdd1, btnAdd2;
+    TextView tv2, tvruang1, tvruang2, tit1, tit2;
+    ImageButton btnAdd1, btnAdd2;
 
     PrefManager prefManager;
     SharedPreferences sharedPreferences;
+    Typeface plagiata, mars;
 
     String digital1blocka, ruangA, blockb, ruangb;
 
@@ -118,7 +120,8 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     }
 
     private void initUi() {
-
+        mars = Typeface.createFromAsset(getAssets(), "fonts/marsmonster.ttf");
+        plagiata = Typeface.createFromAsset(getAssets(), "fonts/plagiata.otf");
         digital1blocka = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_A, ""));
         blockb = (sharedPreferences.getString(Config.DIGITAL_A_BLOCK_B, ""));
         ruangA = (sharedPreferences).getString(Config.RUANG_A, "");
@@ -132,13 +135,17 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         tvruang1.setText(ruangA);
         tvruang2 = (TextView) findViewById(R.id.tvruang2);
         tvruang2.setText(ruangb);
+        tit1 = (TextView) findViewById(R.id.tit1);
+        tit2 = (TextView) findViewById(R.id.tit2);
+        tit1.setTypeface(plagiata);
+        tit2.setTypeface(mars);
         switch1 = (Switch) findViewById(R.id.switch1);
         switch2 = (Switch) findViewById(R.id.switch2);
         switch1.setOnCheckedChangeListener(this);
         switch2.setOnCheckedChangeListener(this);
         tv2.setText(digital1blocka);
-        btnAdd1 = (Button) findViewById(R.id.btnAdd1);
-        btnAdd2 = (Button) findViewById(R.id.btnAdd2);
+        btnAdd1 = (ImageButton) findViewById(R.id.btnAdd1);
+        btnAdd2 = (ImageButton) findViewById(R.id.btnAdd2);
         btnAdd1.setOnClickListener(this);
         btnAdd2.setOnClickListener(this);
 

@@ -92,7 +92,7 @@ public class CustomDialog  {
         });
 
         if (message != null && !message.isEmpty() || message.contains(",")) {
-            String nmessage = message.replaceAll("\\s", "");
+            String nmessage = message.replaceAll(",\\s", ",");
             String[] messageArray = nmessage.split(",");
             for (int i = 0; i < messageArray.length; i++) {
 
@@ -134,7 +134,7 @@ public class CustomDialog  {
         View rowView = inflater.inflate(R.layout.items, null);
 
         final TextView txtdel = (TextView) rowView.findViewById(R.id.textDel);
-        txtdel.setText(name.replaceAll("\\s",""));
+        txtdel.setText(name/*.replaceAll("\\s","")*/);
 
         ImageButton btnItem = (ImageButton) rowView.findViewById(R.id.imgdel);
         btnItem.setOnClickListener(new View.OnClickListener() {
