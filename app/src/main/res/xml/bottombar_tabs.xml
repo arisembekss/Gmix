@@ -1,0 +1,30 @@
+<tabs>
+    <tab
+        id="@+id/tab_favorites"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+    <tab
+        id="@+id/tab_favorites2"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+
+    <tab
+        id="@+id/tab_favorites3"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+
+    <tab
+        id="@+id/tab_favorites4"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+
+    <tab
+        id="@+id/tab_favorites5"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+
+    <tab
+        id="@+id/tab_favorites6"
+        icon="@drawable/energy_on"
+        title="Favorites" />
+</tabs>

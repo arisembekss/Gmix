@@ -149,6 +149,14 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
         btnAdd1.setOnClickListener(this);
         btnAdd2.setOnClickListener(this);
 
+        Button btntab = (Button) findViewById(R.id.btntab);
+        btntab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentab = new Intent(ControllActivity.this, Main2Activity.class);
+                startActivity(intentab);
+            }
+        });
 
 
 

@@ -54,7 +54,7 @@
                     <ImageButton
                         android:id="@+id/btnAdd1"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_toRightOf="@+id/txtTitle2"
                         android:layout_centerVertical="true"
@@ -146,7 +146,7 @@
                     <ImageButton
                         android:id="@+id/btnAdd2"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/txtTitle4"
@@ -229,7 +229,8 @@
         android:layout_height="3dp"
         android:layout_below="@+id/tit2"
         android:background="@color/divider"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:id="@+id/view" />
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -237,5 +238,16 @@
         android:visibility="gone"
         android:text="TextView" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tab View"
+        android:id="@+id/btntab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="23dp" />
 
 </RelativeLayout>
