@@ -46,20 +46,26 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="6dp"
             android:layout_weight="0.5">
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/frcolc"
-                android:name="com.dtech.gmix.fragment.FragmentCola"
+                android:name="com.dtech.gmix.fragment.FragmentColc"
                 tools:layout="@layout/layout_frag_cola" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5">
-
+            android:layout_weight="0.5"
+            android:padding="6dp">
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/frcold"
+                android:name="com.dtech.gmix.fragment.FragmentCold"
+                tools:layout="@layout/layout_frag_cola" />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
@@ -71,20 +77,26 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="6dp"
             android:layout_weight="0.5">
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/frcold"
-                android:name="com.dtech.gmix.fragment.FragmentCola"
+                android:id="@+id/frcole"
+                android:name="com.dtech.gmix.fragment.FragmentCole"
                 tools:layout="@layout/layout_frag_cola" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5">
-
+            android:layout_weight="0.5"
+            android:padding="6dp">
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/frcolf"
+                android:name="com.dtech.gmix.fragment.FragmentColf"
+                tools:layout="@layout/layout_frag_cola" />
         </RelativeLayout>
     </LinearLayout>
 

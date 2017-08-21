@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
  * Created by aris on 21/08/17.
  */
 
-public class FragmentColb extends Fragment implements View.OnClickListener {
+public class FragmentColf extends Fragment implements View.OnClickListener {
 
     View view;
 
@@ -57,7 +57,7 @@ public class FragmentColb extends Fragment implements View.OnClickListener {
         prefManager = new PrefManager(getActivity());
         sharedPreferences = getActivity().getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(Config.REF_DB+Config.REF_2);
+        myRef = database.getReference(Config.REF_DB+Config.REF_2);//TODO change dbase reference
         initUi();
         initRealtimeDbase();
 
@@ -90,13 +90,13 @@ public class FragmentColb extends Fragment implements View.OnClickListener {
     }
 
     private void initUi() {
-        ruanga = (sharedPreferences.getString(Config.RUANGA3, ""));//TODO change preference
-        ruangb = (sharedPreferences.getString(Config.RUANGA4, ""));//TODO change preference
+        ruanga = (sharedPreferences.getString(Config.RUANGA11, ""));//TODO change preference
+        ruangb = (sharedPreferences.getString(Config.RUANGA12, ""));//TODO change preference
         cardroot = (CardView) view.findViewById(R.id.cardroot);
         rel1 = (RelativeLayout) view.findViewById(R.id.rel1);
         rel1.setBackgroundResource(R.color.blue2);//TODO change bgcolor
         tblok = (TextView) view.findViewById(R.id.textblok);
-        tblok.setText("BLOK B");//TODO change blok text
+        tblok.setText("BLOK F");//TODO change blok text
         switch1 = (Switch) view.findViewById(R.id.switch1);
         img1 = (ImageView) view.findViewById(R.id.img1);
         ed1 = (EditText) view.findViewById(R.id.ed1);
@@ -165,12 +165,12 @@ public class FragmentColb extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgbtn1:
-                prefManager.setRuangc(ed1.getText().toString());//TODO change ruang preference
+                prefManager.setRuangk(ed1.getText().toString());//TODO change ruang preference
                 ed1.setFocusable(false);
                 imgbtn1.setVisibility(View.GONE);
                 break;
             case R.id.imgbtn2:
-                prefManager.setRuangd(ed2.getText().toString());//TODO change ruang preference
+                prefManager.setRuangl(ed2.getText().toString());//TODO change ruang preference
                 ed2.setFocusable(false);
                 imgbtn2.setVisibility(View.GONE);
                 break;

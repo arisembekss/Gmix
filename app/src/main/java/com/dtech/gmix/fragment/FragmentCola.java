@@ -61,8 +61,6 @@ public class FragmentCola extends Fragment implements View.OnClickListener {
         initUi();
         initRealtimeDbase();
 
-        prefManager = new PrefManager(getActivity());
-        sharedPreferences = getActivity().getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         return view;
     }
 
@@ -103,7 +101,8 @@ public class FragmentCola extends Fragment implements View.OnClickListener {
         img1 = (ImageView) view.findViewById(R.id.img1);
         ed1 = (EditText) view.findViewById(R.id.ed1);
         if (ruanga == "") {
-            ed1.setText("Edit Lokasi");
+            ed1.setText("");
+            ed1.setHint("Edit Lokasi");
         } else {
             ed1.setText(ruanga);
         }
@@ -111,7 +110,8 @@ public class FragmentCola extends Fragment implements View.OnClickListener {
         imgbtn1 = (ImageButton) view.findViewById(R.id.imgbtn1);
         ed2 = (EditText) view.findViewById(R.id.ed2);
         if (ruangb == "") {
-            ed2.setText("Edit Lokasi");
+            ed2.setText("");
+            ed2.setHint("Edit Lokasi");
         } else {
             ed2.setText(ruangb);
         }
