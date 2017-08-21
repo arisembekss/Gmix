@@ -30,7 +30,7 @@ public class Main2Activity extends AppCompatActivity {
         fragmentTransaction.add(R.id.frcola, frcola);
         fragmentTransaction.commit();
 
-        edcol1 = (EditText) findViewById(R.id.ed1row1);
+        /*edcol1 = (EditText) findViewById(R.id.ed1row1);
 
         edcol1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
         /*edcol1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

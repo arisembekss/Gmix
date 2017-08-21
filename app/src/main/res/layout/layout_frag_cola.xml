@@ -43,7 +43,7 @@
                                 <EditText
                                     android:layout_width="85dp"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/ed1row1"
+                                    android:id="@+id/ed1"
                                     android:hint="edit lokasi"
                                     android:textSize="12sp"
                                     android:focusable="false"
@@ -52,7 +52,9 @@
                                 <ImageButton
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
-                                    android:layout_toRightOf="@+id/ed1row1"
+                                    android:id="@+id/imgbtn1"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
                                     android:backgroundTint="@android:color/transparent"
                                     android:visibility="gone"
                                     android:src="@android:drawable/checkbox_on_background"/>
@@ -63,17 +65,18 @@
                                 <EditText
                                     android:layout_width="85dp"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/ed2row1"
-                                    android:hint="Tambah/edit lokasi"
-                                    android:textSize="10sp"
+                                    android:id="@+id/ed2"
+                                    android:hint="edit lokasi"
+                                    android:textSize="12sp"
                                     />
                                 <ImageButton
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
+                                    android:id="@+id/imgbtn2"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentRight="true"
                                     android:backgroundTint="@android:color/transparent"
-                                    android:visibility="visible"
+                                    android:visibility="gone"
                                     android:src="@android:drawable/checkbox_on_background"/>
                             </RelativeLayout>
                         </LinearLayout>
