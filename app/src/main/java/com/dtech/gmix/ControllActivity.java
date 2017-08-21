@@ -6,9 +6,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -30,7 +32,7 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
     Switch switch1, switch2;
     TextView tv2, tvruang1, tvruang2, tit1, tit2;
     ImageButton btnAdd1, btnAdd2;
-
+    EditText edcol1;
     PrefManager prefManager;
     SharedPreferences sharedPreferences;
     Typeface plagiata, mars;
@@ -158,10 +160,16 @@ public class ControllActivity extends AppCompatActivity implements CompoundButto
             }
         });
 
+        /*edcol1 = (EditText) findViewById(R.id.ed1row1);
 
-
-
-
+        edcol1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!edcol1.isEnabled()) {
+                    edcol1.setEnabled(true);
+                }
+            }
+        });*/
         //switch1.isChecked()
 
     }
