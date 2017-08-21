@@ -68,7 +68,8 @@
                                     android:id="@+id/ed2"
                                     android:hint="edit lokasi"
                                     android:textSize="12sp"
-                                    />
+                                    android:focusable="false"
+                                    android:maxLength="13"/>
                                 <ImageButton
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
