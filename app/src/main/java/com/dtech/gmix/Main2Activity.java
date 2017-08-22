@@ -43,13 +43,13 @@ public class Main2Activity extends AppCompatActivity {
         } else {
             FragmentCola frcola = new FragmentCola();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.frcola, frcola);
-            fragmentTransaction.commit();
-            fragmentManager = getSupportFragmentManager();
+            //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            //fragmentTransaction.add(R.id.frcola, frcola);
+            //fragmentTransaction.commit();
+            //fragmentManager = getSupportFragmentManager();
             if (savedInstanceState == null) {
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frcola, frcola);
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.frcola, frcola);
 
                 fragmentTransaction.commit();
             }

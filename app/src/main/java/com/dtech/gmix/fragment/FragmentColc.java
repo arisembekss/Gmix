@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -49,6 +50,7 @@ public class FragmentColc extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     DatabaseReference myRef;
     FirebaseDatabase database;
+    InputMethodManager imm;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class FragmentColc extends Fragment implements View.OnClickListener {
         sharedPreferences = getActivity().getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(Config.REF_DB+Config.REF_1);//TODO change dbase reference
+        imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
         initUi();
         initRealtimeDbase();
 
@@ -167,11 +170,13 @@ public class FragmentColc extends Fragment implements View.OnClickListener {
             case R.id.imgbtn1:
                 prefManager.setRuange(ed1.getText().toString());//TODO change ruang preference
                 ed1.setFocusable(false);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                 imgbtn1.setVisibility(View.GONE);
                 break;
             case R.id.imgbtn2:
                 prefManager.setRuangf(ed2.getText().toString());//TODO change ruang preference
                 ed2.setFocusable(false);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                 imgbtn2.setVisibility(View.GONE);
                 break;
         }
