@@ -1,6 +1,8 @@
 package com.dtech.gmix;
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,23 +18,47 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dtech.gmix.fragment.FragmentCola;
+import com.dtech.gmix.preference.Config;
+import com.dtech.gmix.preference.PrefManager;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Main2Activity extends AppCompatActivity {
 
     EditText edcol1;
     Typeface plagiata, mars;
     TextView tit1, tit2;
+
+    PrefManager prefManager;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_card);
 
+        prefManager = new PrefManager(this);
+        sharedPreferences = getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
+        String login = (sharedPreferences.getString(Config.LOGIN, ""));
+        if (login == "") {
+            launchLogin();
+        } else {
+            FragmentCola frcola = new FragmentCola();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.frcola, frcola);
+            fragmentTransaction.commit();
+            fragmentManager = getSupportFragmentManager();
+            if (savedInstanceState == null) {
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frcola, frcola);
 
-        FragmentCola frcola = new FragmentCola();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frcola, frcola);
-        fragmentTransaction.commit();
+                fragmentTransaction.commit();
+            }
+            initUi();
+        }
+
+    }
+
+    private void initUi() {
 
         mars = Typeface.createFromAsset(getAssets(), "fonts/marsmonster.ttf");
         plagiata = Typeface.createFromAsset(getAssets(), "fonts/plagiata.otf");
@@ -40,28 +66,12 @@ public class Main2Activity extends AppCompatActivity {
         tit2 = (TextView) findViewById(R.id.tit2);
         tit1.setTypeface(plagiata);
         tit2.setTypeface(mars);
-        /*edcol1 = (EditText) findViewById(R.id.ed1row1);
+    }
 
-        edcol1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        edcol1.setFocusableInTouchMode(true);
-
-                        //return true;
-
-                }
-                return false;
-            }
-        });*/
-        /*edcol1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                edcol1.setFocusableInTouchMode(true);
-            }
-        });*/
+    private void launchLogin() {
+        Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

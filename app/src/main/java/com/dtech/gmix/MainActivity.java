@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (username.matches("user") && password.matches("user123")) {
                     prefManager.setLogin("Logged in");
-                    Intent intent = new Intent(MainActivity.this, ControllActivity.class);
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     startActivity(intent);
                     finish();
                 } else {
