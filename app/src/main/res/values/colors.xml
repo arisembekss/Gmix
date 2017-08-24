@@ -17,4 +17,14 @@
     <color name="blue2">#4fc3f7</color>
     <color name="teal1">#009688</color>
     <color name="teal2">#4db6ac</color>
+    <color name="deeppurple1">#673ab7</color>
+    <color name="deeppurple2">#9575cd</color>
+    <color name="lime1">#1b5e20</color>
+    <color name="lime2">#81c784</color>
+    <color name="lime3">#558b2f</color>
+    <color name="lime4">#76ff03</color>
+    <color name="amber1">#00b0ff</color>
+    <color name="amber2">#0091ea</color>
+    <color name="pink1">#0d47a1</color>
+    <color name="pink2">#2979ff</color>
 </resources>

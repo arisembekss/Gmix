@@ -37,7 +37,7 @@ public class FragmentCole extends Fragment implements View.OnClickListener {
     View view;
 
     CardView cardroot;
-    RelativeLayout rel1;
+    RelativeLayout rel1, lay1, lay2;
     TextView tblok;
     Switch switch1;
     ImageView img1;
@@ -98,6 +98,10 @@ public class FragmentCole extends Fragment implements View.OnClickListener {
         cardroot = (CardView) view.findViewById(R.id.cardroot);
         rel1 = (RelativeLayout) view.findViewById(R.id.rel1);
         rel1.setBackgroundResource(R.color.blue2);//TODO change bgcolor
+        lay1 = (RelativeLayout) view.findViewById(R.id.lay1);
+        lay2 = (RelativeLayout) view.findViewById(R.id.lay2);
+        lay1.setBackgroundResource(R.color.pink2);
+        lay2.setBackgroundResource(R.color.pink1);
         tblok = (TextView) view.findViewById(R.id.textblok);
         tblok.setText("BLOK E");//TODO change blok text
         switch1 = (Switch) view.findViewById(R.id.switch1);
