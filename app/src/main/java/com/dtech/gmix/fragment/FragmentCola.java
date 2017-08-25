@@ -73,7 +73,7 @@ public class FragmentCola extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String bloka = String.valueOf(dataSnapshot.getValue());
-                Log.d("Value blok-a ", bloka);
+                Log.d("Value digital-1 ", bloka);
                 //prefManager.setDigitalaBloka(bloka);
                 if (bloka == "0") {
                     switch1.setChecked(false);

@@ -108,7 +108,7 @@
         android:id="@+id/tit1"
         android:textColor="@color/icons"
         android:textStyle="bold"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:text="G-MIX"/>
     <TextView
         android:layout_width="wrap_content"
@@ -118,8 +118,8 @@
         android:textColor="@color/icons"
         android:textStyle="bold"
         android:layout_below="@+id/tit1"
-        android:text="CONTROL ELECTRICAL OPERATION"
-        android:textSize="20sp"
+        android:text="CONTROL  ELECTRICAL  OPERATION"
+        android:textSize="25sp"
         android:id="@+id/tit2"/>
 
     <View

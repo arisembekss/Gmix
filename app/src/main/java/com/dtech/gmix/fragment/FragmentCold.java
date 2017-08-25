@@ -59,7 +59,7 @@ public class FragmentCold extends Fragment implements View.OnClickListener {
         prefManager = new PrefManager(getActivity());
         sharedPreferences = getActivity().getSharedPreferences(Config.PREF_NAME, Config.PRIVATE_MODE);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(Config.REF_DB+Config.REF_2);//TODO change dbase reference
+        myRef = database.getReference(Config.REF_DB+Config.REF_4);//TODO change dbase reference
         imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
         initUi();
         initRealtimeDbase();
@@ -73,7 +73,7 @@ public class FragmentCold extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String bloka = String.valueOf(dataSnapshot.getValue());
-                Log.d("Value blok-b ", bloka);
+                Log.d("Value digital-4 ", bloka);
                 //prefManager.setDigitalaBloka(bloka);
                 if (bloka == "0") {
                     switch1.setChecked(false);
